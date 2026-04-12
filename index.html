@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamentos - Laser e Tinta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <img src="logolet.png">
+        <div style="font-size: 0.9rem;">Sistema de Orçamentos</div>
+    </header>
+
+    <div class="app-container">
+        <nav class="sidebar">
+            <button class="nav-btn" onclick="openTab(event, 'dtfuv')">DTF UV</button>
+            <button class="nav-btn" onclick="openTab(event, 'transf-plano')">Transfer Plano</button>
+            <button class="nav-btn" onclick="openTab(event, 'transf-cil')">Transfer Cilíndrico</button>
+            <button class="nav-btn" onclick="openTab(event, 'medalha')">Medalha</button>
+            <button class="nav-btn" onclick="openTab(event, 'etiqueta')">Etiqueta Resinada</button>
+            
+        </nav>
+
+        <main class="content">
+            
+            <div id="dtfuv" class="calculator-section active">
+                <h2>(TESTE) Cálculo Para Adesivos em DTF UV</h2>
+                <p style="margin-bottom: 20px; color: #666;">Preencha os dados abaixo para calcular o custo dos adesivos em DTF UV.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Largura</label>
+                        <input type="number" id="dtfuv-largura" placeholder="Ex: 15">
+                    </div>
+                    <div class="form-group">
+                        <label>Altura</label>
+                        <input type="number" id="dtfuv-altura" placeholder="Ex: 30">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade de Adesivos</label>
+                        <input type="number" id="dtfuv-qtd" placeholder="Ex: 100">
+                    </div>
+                </div>
+
+                <button class="btn-calculate" onclick="calcular('dtfuv')">Calcular Orçamento</button>
+
+                <div id="res-dtfuv" class="result-box">
+                    <h2>DTF UV COMUM</h2>
+                    <div class="result-title">Valor Total Estimado:</div>
+                    <div class="result-value">R$ <span id="val-dtfuv">0,00</span></div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Valor unitário: R$ <span id="unit-dtfuv">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px;">Valor unitário real: R$ <span id="unit-dtfuvreal">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px; margin-bottom: 15px;">Cabem <span id="cabem-dtfuv">0</span> no faturamento mínimo de R$ 100,00</p>
+        
+                    <h2 style="color: #d1ce24; text-shadow: #a5a209 1px 1px 1px;">DTF UV DOURADO</h2>
+                    <div class="result-title">Valor Total Estimado:</div>
+                    <div class="result-value">R$ <span id="val-dourado">0,00</span></div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Valor unitário: R$ <span id="unit-dourado">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px;">Valor unitário real: R$ <span id="unit-douradoreal">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px;">Cabem <span id="cabem-dourado">0</span> no faturamento mínimo de R$ 200,00</p>
+                </div>
+            </div>
+
+
+
+            <div id="transf-plano" class="calculator-section">
+                <h2>Cálculo em Transfer Plano</h2>
+                <p style="margin-bottom: 20px; color: #666;">Cálculo para impressão em transfer plano.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Largura da Arte (cm)</label>
+                        <input type="number" id="trfp-largura" placeholder="Ex: 5">
+                    </div>
+                    <div class="form-group">
+                        <label>Altura da Arte (cm)</label>
+                        <input type="number" id="trfp-altura" placeholder="Ex: 10">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input type="number" id="trfp-quant" placeholder="Ex: 50">
+                    </div>
+                </div>
+
+                <button class="btn-calculate" onclick="calcular('transf-plano')">Calcular Orçamento</button>
+
+                <div id="res-trfp" class="result-box">
+                    <div class="result-title">Valor Total Estimado:</div>
+                    <div style="margin-bottom: 10px;">R$ <span id="unit-trfp">0,00</span></div>
+                    <div style="margin-bottom: 7px;">Valor Unitário:</div>
+                    <div class="result-trfp">R$ <span id="val-trfp">0,00</span></div>
+                </div>
+            </div>
+
+            <div id="transf-cil" class="calculator-section">
+                <h2>Cálculo Transfer Cilíndrico</h2>
+                <p style="margin-bottom: 20px; color: #666;">Cálculo para Transfer Cilíndrico.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Largura</label>
+                        <input type="number" id="trfc-largura" placeholder="Ex: 4">
+                    </div>
+                    <div class="form-group">
+                        <label>Altura</label>
+                        <input type="number" id="trfc-altura" placeholder="Ex: 6">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input type="number" id="trfc-quant" placeholder="Ex: 100">
+                    </div>
+                </div>
+
+                <button class="btn-calculate" onclick="calcular('transf-cil')">Calcular Orçamento</button>
+
+                <div id="res-trfc" class="result-box">
+                    <div class="result-title">Valor Total Estimado:</div>
+                    <div class="result-value">R$ <span id="val-trfc">0,00</span></div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Valor unitário: R$ <span id="unit-trfc">0,00</span></p>
+                    <p style="font-size: 1rem; color: #b10c0c; margin-top: 10px;">CASO SEJA COPO TIPO STANLEY/METAL CONSIDERAR UNITÁRIO DE : R$ <span>4,90</span>, valor total de R$ <span id="stanley">00,00</span></p>
+                </div>
+            </div>
+
+            <div id="medalha" class="calculator-section">
+                <h2>Cálculo Medalinha 1,5cm</h2>
+                <p>Configure os campos para etiqueta resinada + acrílico aqui.</p>
+
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input type="number" id="medalha-quant" placeholder="Ex: 4">
+                    </div>
+                    <div class="form-group">
+                        <label>Lados</label>
+                        <input type="number" min="1" max="2" id="medalha-lado" value="1">
+                    </div>
+                </div>
+
+                <button class="btn-calculate" onclick="calcular('medalha')">Calcular Orçamento</button>
+
+
+                <div id="res-medalha" class="result-box">
+                    <div class="result-title">Valor Total Estimado:</div>
+                    <div class="result-value">R$ <span id="val-medalha">0,00</span></div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Valor unitário: R$ <span id="unit-medalha">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px;">Valor acrílico: R$ <span id="acri">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px;">Valor etiqueta: R$ <span id="etiq">0,00</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 2px;">Valor manuseio: R$ <span id="manu">0,00</span></p>
+
+                </div>
+            </div>
+
+            <div id="etiqueta" class="calculator-section">
+                <h2>Cálculo para Etiqueta Resinada</h2>
+                <p style="margin-bottom: 20px; color: #666;">Cálculo para confecção de etiquetas resinadas.</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Largura da Etiqueta (cm)</label>
+                        <input type="number" id="etq-largura" placeholder="Ex: 1,5">
+                    </div>
+                    <div class="form-group">
+                        <label>Altura da Etiqueta (cm)</label>
+                        <input type="number" id="etq-altura" placeholder="Ex: 2">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input type="number" id="etq-quant" placeholder="Ex: 250">
+                    </div>
+                </div>
+
+                <button class="btn-calculate" onclick="calcular('etiqueta')">Calcular Orçamento</button>
+
+                <div id="res-etq" class="result-box">
+                    <h2>Etiqueta Normal</h2>
+                    <div class="result-title">Valor Unitário:</div>
+                    <div class="result-trfp">R$ <span id="unit-etq">0,00</span></div>
+                    <div class="result-title" style="margin-top: 5px;">Valor Total Estimado:</div>
+                    <div>R$ <span id="val-etq">0,00</span></div><br>
+                    <h2 style="color: #c5c5c5; text-shadow: #414141 1px 1px 1px;">Etiqueta Poliéster</h2>
+                    <div class="result-title">Valor Unitário:</div>
+                    <div class="result-trfp">R$ <span id="unit-pol">0,00</span></div>
+                    <div class="result-title" style="margin-top: 5px;">Valor Total Estimado:</div>
+                    <div>R$ <span id="val-pol">0,00</span></div><br>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="script.min.js"></script>
+</body>
+</html>

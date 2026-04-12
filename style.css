@@ -1,0 +1,216 @@
+:root {
+            --primary-color: #E24E8A; 
+            --primary-hover: #c54779;
+            --dark-bg: #1a1a1a;     
+            --light-bg: #f4f4f4;     
+            --white: #ffffff;
+            --text-color: #333333;
+            --border-color: #dddddd;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        img {
+            height: 60px;
+        }
+
+        header {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        header span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .app-container {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            width: 95%;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c2c2c;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .sidebar button {
+            background: none;
+            border: none;
+            color: #ccc;
+            padding: 15px 20px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar button:hover {
+            background-color: #383838;
+            color: var(--white);
+        }
+
+        .sidebar button.active {
+            background-color: #383838;
+            color: var(--white);
+            border-left-color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .content {
+            flex: 1;
+            padding: 2rem;
+            background-color: var(--white);
+        }
+
+        .calculator-section {
+            display: none; 
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .calculator-section.active {
+            display: block; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-bg);
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn-calculate {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn-calculate:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .result-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            display: none; 
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-bg);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+            .sidebar button {
+                white-space: nowrap;
+                border-left: none;
+                border-bottom: 4px solid transparent;
+            }
+            .sidebar button.active {
+                border-left: none;
+                border-bottom-color: var(--primary-color);
+            }
+        }
